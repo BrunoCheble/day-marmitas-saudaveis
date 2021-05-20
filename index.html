@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html translate="no" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Marmitas Saudáveis</title>
+
+    <meta property="og:site_name" content="Day">
+    <meta property="og:title" content="Marmitas Saudáveis" />
+    <meta property="og:description" content="Marmitas saudáveis" />
+    <meta property="og:image" content="./logo_whatsapp.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="1440432931" />
+
+    <link rel="icon" href="http://monteirinho.com.br/assets/img/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700'>
+    <link rel="stylesheet" href="css/custom.css?123">
+    <style>
+
+        body {
+            display: block;
+            position: relative;
+        }
+        
+        body:after{
+            content: "";
+            height: 100%;
+            opacity: 0.8;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;   
+            /* Center and scale the image nicely */
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        } 
+        .bg-1:after {
+            background-image: url('./img/food-background1.jpg');
+        }
+        .bg-2:after {
+            background-image: url('./img/food-background2.jpg');
+        }
+        .bg-3:after {
+            background-image: url('./img/food-background3.jpg');
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; padding: 1em 0;">
+        <div>
+            <img style="border-radius: 50%; margin-right: 1em;" src="./logo_whatsapp.png" width="100px" alt="">
+        </div>
+        <div>
+            <h1 style="font-size: 1.3em; font-weight: 400; color: #d24032;  text-shadow: 3px 3px 5px #FFF">Day Marmitas Saudáveis</h1>
+            <h5 style="font-size: 1em; font-weight: 400; text-align: right; margin-bottom: 8px"><a href="https://www.instagram.com/day_marmitassaudaveis/" target="_blank"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-instagram"></i></a> @day_marmitassaudaveis</h5>
+            <h5 class="whatsapp" style="font-size: 1em; font-weight: 400; text-align: right; cursor: pointer; margin: 0"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-whatsapp"></i> 966 450 147</h5>
+        </div>
+        
+    </div>
+</div>
+    <div class="alert alert-warning text-center">
+        <span style="font-size: .9em; font-weight: 400;">As marmitas são solicitadas até <b>quinta-feira às 17h</b> e entegues no <b>sábado</b>.</span>
+    </div>
+
+    <div class="container">
+        <div class="row" id="catalogo"></div>
+    </div>
+
+    <nav class="d-md-none navbar fixed-bottom navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="home" href="#"><i class="fa fa-home" style="color: #d24032"></i></a>
+            <a class="navbar-brand" id="link_instagram" href="https://www.instagram.com/day_marmitassaudaveis/" style="color: #de4e69; margin: 0"><i class="fa fa-instagram"></i> <small id="qty_favorite"></small></a>
+            <a class="navbar-brand" id="link_whatsapp" href="#"><i class="fa fa-whatsapp"></i></a>
+        </div>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <script src="./day_menu.js"></script>
+
+    <script>
+
+    const urlApi = 'day_menu.json';
+
+    function getItemHTML(data) 
+    {        
+        return `<div class="col-sm-6 col-lg-4 mb-4">
+            <div 
+            data-id="${data.idProdutos}" 
+            data-descricao="${data.descricao}" 
+            class="card">
+                <div class="product">
+                    <div class="option">${data.idProdutos}ª</div>
+                    <div class="fornt">
+                        <div class="img-wrap">
+                            <img data="foto" src="${data.foto}" alt="mac air"/>
+                        </div>
+                        <div class="description clearfix">
+                            <span class="discount">€ ${data.preco}</span>
+                            <div class="content">
+                                <p data="descricao" >${data.descricao}</p>
+                                <button class="pedido btn btn-danger btn-sm">Fazer Pedido</button>
+                            </div>
+                        </div>
+                    </div><!-- fornt -->                    
+                </div><!-- /product -->
+            </div>
+        </div> `;
+    }
+
+    if (day_menu != undefined && day_menu.length > 0) {
+        let itemsHTML = day_menu.map( getItemHTML ).join('');
+        let $items =  $( itemsHTML );
+        $('#catalogo').append($items);
+    }
+    else {
+        $.getJSON(urlApi, function(result) {
+            if (result.length > 0) {
+                let itemsHTML = result.map( getItemHTML ).join('');
+                let $items =  $( itemsHTML );
+                $('#catalogo').append($items);
+            }
+        });
+    }
+    function setBackgroundRandom() {
+        let num = Math.floor(Math.random() * (3 - 1 + 1) ) + 1;
+        let img = `bg-${num}`;
+        $('body').addClass(img);
+    }
+
+    setBackgroundRandom();
+
+    $('.whatsapp, #link_whatsapp').click(function() {
+        const number = '+351966450147';
+    
+        var url = 'https://api.whatsapp.com/send?phone='+ number 
+           
+        window.open(url);
+    });
+
+    $('.pedido').click(function() {
+        const number = '+351966450147';
+    
+        $card = $(this).parents('.card');
+
+        const option = $card.data('id')+'ª opção: '+$card.data('descricao');
+        
+        var url = 'https://api.whatsapp.com/send?phone=' 
+           + number 
+           + '&text=' 
+           + option
+        
+        window.open(url);
+    });
+    </script>
+</body>
+</html>
