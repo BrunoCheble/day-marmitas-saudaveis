@@ -56,20 +56,25 @@
 <body>
 
     <div class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; padding: 1em 0;">
-        <div>
-            <img style="border-radius: 50%; margin-right: 1em;" src="./logo_whatsapp.png" width="100px" alt="">
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; padding: 1em 0;">
+            <div>
+                <img style="border-radius: 50%; margin-right: 1em;" src="./logo_whatsapp.png" width="100px" alt="">
+            </div>
+            <div>
+                <h1 style="font-size: 1.3em; font-weight: 400; color: #d24032;  text-shadow: 3px 3px 5px #FFF">Day Marmitas Saudáveis</h1>
+                <h5 style="font-size: 1em; font-weight: 400; text-align: right; margin-bottom: 8px"><a href="https://www.instagram.com/day_marmitassaudaveis/" target="_blank"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-instagram"></i></a> @day_marmitassaudaveis</h5>
+                <h5 class="whatsapp" style="font-size: 1em; font-weight: 400; text-align: right; cursor: pointer; margin: 0"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-whatsapp"></i> 966 450 147</h5>
+            </div>
+            
         </div>
-        <div>
-            <h1 style="font-size: 1.3em; font-weight: 400; color: #d24032;  text-shadow: 3px 3px 5px #FFF">Day Marmitas Saudáveis</h1>
-            <h5 style="font-size: 1em; font-weight: 400; text-align: right; margin-bottom: 8px"><a href="https://www.instagram.com/day_marmitassaudaveis/" target="_blank"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-instagram"></i></a> @day_marmitassaudaveis</h5>
-            <h5 class="whatsapp" style="font-size: 1em; font-weight: 400; text-align: right; cursor: pointer; margin: 0"><i style="margin-right: 5px; font-weight: 400;" class="fa fa-whatsapp"></i> 966 450 147</h5>
-        </div>
-        
     </div>
-</div>
-    <div class="alert alert-warning text-center">
+
+    <div style="margin-bottom: 0;" class="alert alert-warning text-center">
         <span style="font-size: .9em; font-weight: 400;">As marmitas são solicitadas até <b>quinta-feira às 17h</b> e entegues no <b>sábado</b>.</span>
+    </div>
+
+    <div class="alert alert-danger text-center">
+        <span style="font-size: .85em; font-weight: 400;"><b>Promoção:</b> A cada 10 marmitas, uma é por nossa conta!</span>
     </div>
 
     <div class="container">
@@ -110,7 +115,7 @@
                             <div class="content">
                                 <p data="descricao" >${data.descricao}.</p>
                                 <span style="font-size: 13px; color: #666; line-height: 31px;" class="pull-right">Peso apox. 380g</span>
-                                <button class="pedido btn btn-danger btn-sm">Fazer Pedido</button>
+                                <button style="font-weight: bold" class="pedido btn btn-danger btn-sm"><i style="color: #fff; margin-right: 5px; font-weight: bold" class="fa fa-whatsapp"></i> Fazer Pedido</button>
                             </div>
                         </div>
                     </div><!-- fornt -->                    
@@ -163,6 +168,7 @@
         
         window.open(url);
     });
+
     </script>
 </body>
 </html>
