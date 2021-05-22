@@ -115,6 +115,7 @@ body {
 .product .fornt .description .content p, .product .back .description .content p {
     margin: 10px 0 15px;
     font-size: 14px;
+    height: 43px;
     font-weight: bold;
     color: #41464b;
 }
